@@ -52,6 +52,15 @@ public class MainActivity extends Activity {
 			}
 			
 		});
+		
+		gvResults.setOnScrollListener(new EndlessScrollListener() {
+		    @Override
+		    public void onLoadMore(int page, int totalItemsCount) {
+	                // Triggered only when new data needs to be appended to the list
+	                // Add whatever code is needed to append new items to your AdapterView
+		    	searchImage(page);
+		    }
+	    });
 	}
 	
 	@Override
@@ -81,18 +90,22 @@ public class MainActivity extends Activity {
 	}
 	
 	public void onImageSearch(View v){
+		searchImage(0);
+	}
+	
+	public void searchImage(int page){
 		String query = etQuery.getText().toString();
-		Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
+		if(page == 0){
+			imageResults.clear();
+		}
 		AsyncHttpClient client = new AsyncHttpClient();
 		// https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android
-		client.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + Uri.encode(query) + "&rsz=8&start=" + 0, new JsonHttpResponseHandler(){
+		client.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + Uri.encode(query) + "&rsz=8&start=" + (page * 8), new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response){				
 				try{
-					JSONArray imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
-					imageResults.clear();
+					JSONArray imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");					
 					imageAdapter.addAll(ImageResult.fromJsonArray(imageJsonResults));					
-					Log.d("DEBUG", imageResults.toString());
 				} catch(JSONException e){
 					e.printStackTrace();
 				}
