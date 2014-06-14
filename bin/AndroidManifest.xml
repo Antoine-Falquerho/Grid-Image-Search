@@ -3,6 +3,8 @@
     package="com.example.gridimagesearch"
     android:versionCode="1"
     android:versionName="1.0" >
+    
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -25,6 +27,10 @@
         <activity
             android:name="com.example.gridimagesearch.SettingsActivity"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.gridimagesearch.ImageDisplayActivity"
+            android:label="@string/title_activity_image_display" >
         </activity>
     </application>
 

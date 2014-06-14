@@ -5,7 +5,7 @@
     tools:context="${packageName}.${activityClass}" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

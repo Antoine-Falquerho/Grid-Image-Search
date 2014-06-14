@@ -4,5 +4,7 @@
     <string name="app_name">GridImageSearch</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="etQuery">Enter Search Term</string>
+    <string name="title_activity_image_display">ImageDisplayActivity</string>
 
 </resources>
