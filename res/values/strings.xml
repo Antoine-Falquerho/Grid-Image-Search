@@ -6,5 +6,41 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="etQuery">Enter Search Term</string>
     <string name="title_activity_image_display">ImageDisplayActivity</string>
+    
+    <string-array name="imgcolor_array">
+        <item></item>
+        <item>Mercury</item>
+        <item>black</item>
+		<item>blue</item>
+		<item>brown</item>
+		<item>gray</item>
+		<item>green</item>
+		<item>orange</item>
+		<item>pink</item>
+		<item>purple</item>
+		<item>red</item>
+		<item>teal</item>
+		<item>white</item>
+		<item>yellow</item>
+    </string-array>
+    
+    <string-array name="imgsz_array">
+        <item></item>
+    	<item>icon</item>
+		<item>small</item>
+	    <item>medium</item>
+	    <item>large</item>
+	    <item>xlarge</item>
+		<item>xxlarge</item>
+		<item>huge</item>
+	</string-array>
+	
+    <string-array name="imgtype_array">
+        <item></item>
+		<item>face</item>
+		<item>photo</item>
+		<item>clipart</item>
+		<item>lineart</item>
+	</string-array>
 
 </resources>

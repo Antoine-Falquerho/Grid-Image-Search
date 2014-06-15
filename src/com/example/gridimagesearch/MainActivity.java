@@ -8,9 +8,11 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,9 +31,14 @@ public class MainActivity extends Activity {
 	private final int SETTINGS_CODE = 10;
 	private EditText etQuery;
 	private GridView gvResults;
-	private Button btnSearch;
+	private Button btnSearch;	
 	ArrayList<ImageResult> imageResults = new ArrayList<ImageResult>();
 	ImageResultArrayAdapter imageAdapter;
+//	PREF
+	private String imgcolor;	
+	private String imgsz;
+	private String restrict;
+	private String imgtype;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +68,19 @@ public class MainActivity extends Activity {
 		    	searchImage(page);
 		    }
 	    });
+		
+		setPreferences();
+		
 	}
 	
+	private void setPreferences() {
+		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		imgcolor = pref.getString("imgcolor", "");
+		imgsz = pref.getString("imgsz", "");
+		restrict = pref.getString("restrict", "");
+		imgtype = pref.getString("imgtype", "");
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -72,6 +90,10 @@ public class MainActivity extends Activity {
 	
 	public void onSettings(MenuItem mi){
 		Intent iSettings = new Intent(MainActivity.this, SettingsActivity.class);
+		iSettings.putExtra("imgcolor", imgcolor);		
+		iSettings.putExtra("imgsz", imgsz);
+		iSettings.putExtra("restrict", restrict);
+		iSettings.putExtra("imgtype", imgtype);
 		startActivityForResult(iSettings, SETTINGS_CODE);
 	}
 	
@@ -79,14 +101,23 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	  // REQUEST_CODE is defined above
 	  if (resultCode == RESULT_OK && requestCode == SETTINGS_CODE) {
-	     Toast.makeText(this, "something", Toast.LENGTH_SHORT).show();
+	     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+	     Editor edit = pref.edit();
+	     imgcolor = data.getExtras().getString("imgcolor");
+	     edit.putString("imgcolor", imgcolor );
+	     edit.putString("imgsz", data.getExtras().getString("imgsz"));
+	     edit.putString("restrict", data.getExtras().getString("restrict"));
+	     edit.putString("imgtype", data.getExtras().getString("imgtype"));
+	     edit.commit();	    
+	     setPreferences();
+	     Toast.makeText(this, "Settings Saved!", Toast.LENGTH_SHORT).show();
 	  }
 	} 
 	
 	public void setupViews(){
 		etQuery = (EditText)findViewById(R.id.etQuery);
 		gvResults = (GridView)findViewById(R.id.gvResults);
-		btnSearch = (Button)findViewById(R.id.btnSearch);
+		btnSearch = (Button)findViewById(R.id.btnCancel);
 	}
 	
 	public void onImageSearch(View v){
@@ -100,7 +131,7 @@ public class MainActivity extends Activity {
 		}
 		AsyncHttpClient client = new AsyncHttpClient();
 		// https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android
-		client.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + Uri.encode(query) + "&rsz=8&start=" + (page * 8), new JsonHttpResponseHandler(){
+		client.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + Uri.encode(query) + "&rsz=8&start=" + (page * 8) + "&imgcolor=" + imgcolor + "&imgsz=" + imgsz + "&restrict=" + restrict + "&imgtype=" + imgtype, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response){				
 				try{

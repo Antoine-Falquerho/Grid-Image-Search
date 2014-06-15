@@ -17,7 +17,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/btnSearch"
+        android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/btnSearch"
+        android:layout_below="@+id/btnCancel"
         android:numColumns="3" >
     </GridView>
 
