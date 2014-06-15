@@ -54,17 +54,16 @@ public class SettingsActivity extends Activity {
 		sImageType.setAdapter(adapterSImageType);
 		sImageType.setSelection(adapterSImageType.getPosition(imgtypePref));
 		
-		
 		sImageSize = (Spinner) findViewById(R.id.sImageSize);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapterSImageSize = ArrayAdapter.createFromResource(this,
-		        R.array.imgtype_array, android.R.layout.simple_spinner_item);
+		        R.array.imgsz_array, android.R.layout.simple_spinner_item);
 		// Specify the layout to use when the list of choices appears
-		adapterSImageType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapterSImageSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
 		sImageSize.setAdapter(adapterSImageSize);
 		sImageSize.setSelection(adapterSImageSize.getPosition(imgszPref));
-		
+				
 		etSiteFilter = (EditText) findViewById(R.id.etSiteFilter);
 		etSiteFilter.setText(restrictPref);
 	}
@@ -81,7 +80,6 @@ public class SettingsActivity extends Activity {
 	}
 	
 	public void onCancel(View v ){
-		Intent settings = new Intent();		
 		finish();
 	}
 }

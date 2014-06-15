@@ -15,7 +15,7 @@ public class ImageResult implements Serializable {
 	 */
 	private static final long serialVersionUID = 6334981869797068105L;
 	private String fullUrl;
-	private String thumbUrl;
+	private String thumbUrl;	
 	
 	public String getFullUrl() {
 		return fullUrl;

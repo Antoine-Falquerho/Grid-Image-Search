@@ -58,8 +58,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:entries="@array/imgsz_array" />
+        android:layout_toRightOf="@+id/textView2" />
 
     <Spinner
         android:id="@+id/sColor"

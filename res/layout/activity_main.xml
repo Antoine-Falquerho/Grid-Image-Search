@@ -4,18 +4,6 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
-    <EditText
-        android:id="@+id/etQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="@string/etQuery" >
-
-        <requestFocus />
-    </EditText>
-
     <Button
         android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
@@ -33,5 +21,14 @@
         android:layout_below="@+id/btnCancel"
         android:numColumns="3" >
     </GridView>
+
+    <EditText
+        android:id="@+id/etQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnCancel"
+        android:layout_alignParentLeft="true"
+        android:ems="10"
+        android:hint="@string/etQuery" />
 
 </RelativeLayout>
