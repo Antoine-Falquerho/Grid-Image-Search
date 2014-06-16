@@ -5,8 +5,12 @@
     tools:context="${packageName}.${activityClass}" >
     
     <com.loopj.android.image.SmartImageView
-    android:id="@+id/ivResult"    
-    android:src="@android:drawable/screen_background_dark"
+    android:id="@+id/ivResult"
+    android:maxWidth="600dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/tvTitle"
+    android:src="@android:drawable/screen_background_light"
     />
 
     <TextView

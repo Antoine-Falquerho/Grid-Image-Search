@@ -27,6 +27,9 @@
             android:layout_alignBottom="@+id/btnSearch"
             android:layout_alignParentLeft="true"
             android:ems="10"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+  			android:lines="1"
             android:hint="@string/etQuery" >
 
             <requestFocus />

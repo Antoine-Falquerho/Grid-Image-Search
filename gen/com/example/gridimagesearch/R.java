@@ -20,11 +20,11 @@ public final class R {
         public static final int ic_settings=0x7f020001;
     }
     public static final class id {
-        public static final int btnCancel=0x7f08000f;
-        public static final int btnSave=0x7f080010;
+        public static final int btnCancel=0x7f080010;
+        public static final int btnSave=0x7f080011;
         public static final int btnSearch=0x7f080003;
         public static final int etQuery=0x7f080004;
-        public static final int etSiteFilter=0x7f080011;
+        public static final int etSiteFilter=0x7f08000f;
         public static final int gvResults=0x7f080006;
         public static final int ivResult=0x7f080000;
         public static final int llShadow=0x7f080005;

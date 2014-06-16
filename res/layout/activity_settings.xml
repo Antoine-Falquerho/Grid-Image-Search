@@ -82,23 +82,7 @@
         android:layout_toRightOf="@+id/textView4"
         android:entries="@array/imgtype_array" />
 
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:onClick="onCancel"
-        android:text="Cancel" />
-
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="onSubmit"
-        android:text="Save" />
+    
 
     <EditText
         android:id="@+id/etSiteFilter"
@@ -107,9 +91,29 @@
         android:layout_alignBaseline="@+id/textView5"
         android:layout_alignBottom="@+id/textView5"
         android:layout_alignLeft="@+id/sImageType"
-        android:ems="10" >
+        android:ems="10" />
 
-        <requestFocus />
-    </EditText>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        android:layout_below="@+id/etSiteFilter"        
+        android:layout_marginTop="40dp"        
+        android:orientation="horizontal" >
+        
+        <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onCancel"
+        android:text="Cancel" />
+
+    	<Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSubmit"
+        android:text="Save" />
+        
+    </LinearLayout>
 
 </RelativeLayout>

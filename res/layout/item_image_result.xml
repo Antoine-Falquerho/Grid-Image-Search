@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.loopj.android.image.SmartImageView
     android:id="@+id/my_image" 
     xmlns:android="http://schemas.android.com/apk/res/android"
