@@ -117,7 +117,7 @@ public class MainActivity extends Activity {
 	public void setupViews(){
 		etQuery = (EditText)findViewById(R.id.etQuery);
 		gvResults = (GridView)findViewById(R.id.gvResults);
-		btnSearch = (Button)findViewById(R.id.btnCancel);
+		btnSearch = (Button)findViewById(R.id.btnSearch);
 	}
 	
 	public void onImageSearch(View v){

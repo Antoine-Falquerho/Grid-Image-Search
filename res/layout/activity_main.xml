@@ -4,31 +4,57 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:onClick="onImageSearch"
-        android:text="Search" />
+        android:layout_alignParentTop="true"        
+        android:background="#fff" >
 
-    <GridView
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onImageSearch"
+            android:layout_alignParentRight="true"
+            android:text="Search" />
+
+        <EditText
+            android:id="@+id/etQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btnSearch"
+            android:layout_alignBottom="@+id/btnSearch"
+            android:layout_alignParentLeft="true"
+            android:ems="10"
+            android:hint="@string/etQuery" >
+
+            <requestFocus />
+        </EditText>
+        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llShadow"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/rlHeader"
+        android:layout_centerHorizontal="true"
+        android:background="#000"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+    
+        <GridView
         android:id="@+id/gvResults"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/btnCancel"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/llShadow"
+        android:background="#f1f1f1"
         android:numColumns="3" >
-    </GridView>
 
-    <EditText
-        android:id="@+id/etQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnCancel"
-        android:layout_alignParentLeft="true"
-        android:ems="10"
-        android:hint="@string/etQuery" />
+    </GridView>
 
 </RelativeLayout>

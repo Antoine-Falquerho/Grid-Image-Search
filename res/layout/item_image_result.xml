@@ -2,6 +2,6 @@
 <com.loopj.android.image.SmartImageView
     android:id="@+id/my_image" 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="75dp"
-    android:layout_height="75dp"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"    
      xmlns:android1="http://schemas.android.com/apk/res/android"/>
