@@ -100,8 +100,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	  // REQUEST_CODE is defined above
-	  if (resultCode == RESULT_OK && requestCode == SETTINGS_CODE) {
-		 searchImage(0);
+	  if (resultCode == RESULT_OK && requestCode == SETTINGS_CODE) {		 
 	     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 	     Editor edit = pref.edit();
 	     imgcolor = data.getExtras().getString("imgcolor");	     
@@ -111,6 +110,7 @@ public class MainActivity extends Activity {
 	     edit.putString("imgtype", data.getExtras().getString("imgtype"));
 	     edit.commit();	    
 	     setPreferences();
+	     searchImage(0);
 	     Toast.makeText(this, "Settings Saved!", Toast.LENGTH_SHORT).show();
 	  }
 	} 
