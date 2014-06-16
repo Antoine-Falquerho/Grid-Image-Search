@@ -4,6 +4,7 @@ import com.loopj.android.image.SmartImageView;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -17,5 +18,7 @@ public class ImageDisplayActivity extends Activity {
 		ImageResult result = (ImageResult) getIntent().getSerializableExtra("result");
 		SmartImageView ivImage = (SmartImageView) findViewById(R.id.ivResult);
 		ivImage.setImageUrl(result.getFullUrl());
+		TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
+		tvTitle.setText(Html.fromHtml(result.getTitle()));
 	}
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import com.loopj.android.image.SmartImageView;
 
 import android.content.Context;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

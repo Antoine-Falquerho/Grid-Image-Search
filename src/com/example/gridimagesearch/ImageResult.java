@@ -16,6 +16,7 @@ public class ImageResult implements Serializable {
 	private static final long serialVersionUID = 6334981869797068105L;
 	private String fullUrl;
 	private String thumbUrl;	
+	private String title;
 	
 	public String getFullUrl() {
 		return fullUrl;
@@ -32,9 +33,11 @@ public class ImageResult implements Serializable {
 		try{
 			this.fullUrl = json.getString("url");
 			this.thumbUrl = json.getString("tbUrl");
+			this.title = json.getString("title");
 		}catch(JSONException e){
 			this.fullUrl = null;
 			this.thumbUrl = null;
+			this.title = null;
 		}
 	}
 	public static ArrayList<ImageResult> fromJsonArray(
@@ -49,6 +52,9 @@ public class ImageResult implements Serializable {
 			}
 		}
 		return results;
+	}
+	public String getTitle() {
+		return title;
 	}
 	
 }
