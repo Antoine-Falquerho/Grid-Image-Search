@@ -101,9 +101,10 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	  // REQUEST_CODE is defined above
 	  if (resultCode == RESULT_OK && requestCode == SETTINGS_CODE) {
+		 searchImage(0);
 	     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 	     Editor edit = pref.edit();
-	     imgcolor = data.getExtras().getString("imgcolor");
+	     imgcolor = data.getExtras().getString("imgcolor");	     
 	     edit.putString("imgcolor", imgcolor );
 	     edit.putString("imgsz", data.getExtras().getString("imgsz"));
 	     edit.putString("restrict", data.getExtras().getString("restrict"));
