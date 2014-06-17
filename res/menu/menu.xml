@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 	<menu xmlns:android="http://schemas.android.com/apk/res/android" >	
+	
+<!-- 	<item android:id="@+id/action_search"
+          android:orderInCategory="5"
+          android:title="Search"
+		  android:icon="@drawable/ic_action_search"
+          android:showAsAction="ifRoom"
+          android:actionViewClass="com.actionbarsherlock.widget.SearchView" />
+	 -->
+<!-- 	<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_label"
+    android:hint="@string/search_hint" >
+</searchable> -->	
 	    
     <item android:id="@+id/menu_settings"
           android:title="Settings"

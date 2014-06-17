@@ -43,8 +43,7 @@
         android:layout_height="1dp"
         android:layout_below="@+id/rlHeader"
         android:layout_centerHorizontal="true"
-        android:background="#000"
-        android:layout_marginBottom="20dp"
+        android:background="#000"        
         android:orientation="vertical" >
 
     </LinearLayout>
@@ -52,11 +51,17 @@
         <GridView
         android:id="@+id/gvResults"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/llShadow"
         android:background="#f1f1f1"
-        android:numColumns="3" >
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:layout_margin="10dp"        
+        >
 
     </GridView>
 
