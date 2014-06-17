@@ -17,11 +17,11 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_action_search=0x7f020000;
-        public static final int ic_settings=0x7f020001;
-        public static final int ic_stat_name=0x7f020002;
+        public static final int ic_launcher=0x7f020001;
+        public static final int ic_settings=0x7f020002;
+        public static final int ic_stat_name=0x7f020003;
     }
     public static final class id {
-        public static final int action_search=0x7f080015;
         public static final int btnCancel=0x7f080010;
         public static final int btnSave=0x7f080011;
         public static final int btnSearch=0x7f080003;
@@ -31,7 +31,7 @@ public final class R {
         public static final int ivImageResult=0x7f080013;
         public static final int ivResult=0x7f080000;
         public static final int llShadow=0x7f080005;
-        public static final int menu_settings=0x7f080016;
+        public static final int menu_settings=0x7f080015;
         public static final int rlHeader=0x7f080002;
         public static final int sColor=0x7f08000d;
         public static final int sImageSize=0x7f08000c;
