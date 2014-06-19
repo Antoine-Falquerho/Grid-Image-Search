@@ -13,14 +13,13 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
@@ -31,9 +30,9 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class MainActivity extends Activity {
 	private final int SETTINGS_CODE = 10;
-	private EditText etQuery;
+//	private EditText etQuery;
 	private GridView gvResults;
-	private Button btnSearch;	
+//	private Button btnSearch;	
 	ArrayList<ImageResult> imageResults = new ArrayList<ImageResult>();
 	ImageResultArrayAdapter imageAdapter;
 //	PREF
@@ -41,6 +40,7 @@ public class MainActivity extends Activity {
 	private String imgsz;
 	private String restrict;
 	private String imgtype;
+	private String query;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 		    public void onLoadMore(int page, int totalItemsCount) {
 	                // Triggered only when new data needs to be appended to the list
 	                // Add whatever code is needed to append new items to your AdapterView
-		    	searchImage(page);
+		    	searchImage(page, query);
 		    }
 	    });
 		
@@ -86,9 +86,24 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-//		getActionBar().setDisplayShowTitleEnabled(false);
-		inflater.inflate(R.menu.menu, menu);
-		return true;	   
+	    inflater.inflate(R.menu.menu, menu);
+	    MenuItem searchItem = menu.findItem(R.id.action_search);
+	    SearchView searchView = (SearchView) searchItem.getActionView();
+	    searchView.setOnQueryTextListener(new OnQueryTextListener() {
+	       @Override
+	       public boolean onQueryTextSubmit(String searchQuery) {
+	    	   Log.d("DEBUG", searchQuery);
+	    	   query = searchQuery;
+	            searchImage(0, searchQuery.toString());	            
+	            return true;
+	       }
+
+	       @Override
+	       public boolean onQueryTextChange(String newText) {
+	           return false;
+	       }
+	   });
+	   return super.onCreateOptionsMenu(menu);
 	} 
 	
 	public void onSettings(MenuItem mi){
@@ -113,29 +128,33 @@ public class MainActivity extends Activity {
 	     edit.putString("imgtype", data.getExtras().getString("imgtype"));
 	     edit.commit();	    
 	     setPreferences();
-	     searchImage(0);
+	     searchImage(0, query);
 	     Toast.makeText(this, "Settings Saved!", Toast.LENGTH_SHORT).show();
 	  }
 	} 
 	
 	public void setupViews(){
-		etQuery = (EditText)findViewById(R.id.etQuery);
+//		etQuery = (EditText)findViewById(R.id.etQuery);
 		gvResults = (GridView)findViewById(R.id.gvResults);
-		btnSearch = (Button)findViewById(R.id.btnSearch);
+//		btnSearch = (Button)findViewById(R.id.btnSearch);
 	}
 	
-	public void onImageSearch(View v){
-		searchImage(0);
-	}
+//	public void onImageSearch(View v){
+//		searchImage(0, query);
+//	}
 	
-	public void searchImage(int page){
-		String query = etQuery.getText().toString();
+	public void searchImage(int page, String query){
+//		String query = etQuery.getText().toString();
+		Log.d("DEBUG", query);
+		Log.d("DEBUG", "-----");
+		
 		if(page == 0){
 			imageResults.clear();
 		}
 		AsyncHttpClient client = new AsyncHttpClient();
 		// https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=android
-		client.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + Uri.encode(query) + "&rsz=8&start=" + (page * 8) + "&imgcolor=" + imgcolor + "&imgsz=" + imgsz + "&restrict=" + restrict + "&imgtype=" + imgtype, new JsonHttpResponseHandler(){
+		Log.d("DEBUG", "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + Uri.encode(query.toString()) + "&rsz=8&start=" + (page * 8) + "&imgcolor=" + imgcolor + "&imgsz=" + imgsz + "&restrict=" + restrict + "&imgtype=" + imgtype);
+		client.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + Uri.encode(query.toString()) + "&rsz=8&start=" + (page * 8) + "&imgcolor=" + imgcolor + "&imgsz=" + imgsz + "&restrict=" + restrict + "&imgtype=" + imgtype, new JsonHttpResponseHandler(){
 			@Override
 			public void onSuccess(JSONObject response){				
 				try{

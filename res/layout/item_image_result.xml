@@ -3,15 +3,18 @@
     android:id="@+id/vllImageResult"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCE1E4"
+    android:minHeight="100dp"
+    android:maxHeight="100dp"
+    android:background="#000"
     android:orientation="vertical" >
     
     <com.loopj.android.image.SmartImageView
     android:id="@+id/ivImageResult" 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="100dp"    
-    android:adjustViewBounds="true"
+    android:adjustViewBounds="true" 
+    android:scaleType="fitCenter"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
     xmlns:android1="http://schemas.android.com/apk/res/android">
 	</com.loopj.android.image.SmartImageView>
 
